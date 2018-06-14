@@ -20,6 +20,34 @@
 	overflow: hidden;
 }
 
+#begin{
+	width: 400px;
+	height: 400px;
+	padding-top: 200px;
+	position: absolute;
+	z-index: 10;
+	background-color: rgba(0,0,0,0.6);
+	left: 50%;
+	margin-left: -200px;
+	top: 20px;
+	display: none;
+}
+
+
+
+#levelup{
+	width: 400px;
+	height: 400px;
+	padding-top: 200px;
+	position: absolute;
+	z-index: 10;
+	background-color: rgba(0,0,0,0.6);
+	left: 50%;
+	margin-left: -200px;
+	top: 20px;
+	display: none;
+}
+
 
 .level
 {
@@ -58,10 +86,71 @@
 	font-weight: bolder;
 }
 
+#magicNumber{
+	width: 35px;
+	height: 35px;
+	border: 3px solid #333333;
+	color: #333333;
+	border-radius: 40px;
+	text-align: center;
+	line-height: 32px;
+	float:right;
+	margin-right: 24px;
+	margin-top: 10px;
+	font-weight: bolder;
+}
+
 #share{
 	line-height:-20px;
 	margin-left:400px;
 	margin-top:-20px;
+}
+
+
+
+#addButton1{
+	width: 35px;
+	height: 35px;
+	border: 3px solid yellowgreen;
+	color: yellow;
+	border-radius: 40px;
+	text-align: center;
+	line-height: 32px;
+	float:right;
+	margin-right: 30px;
+	margin-top: -185px;
+	cursor:pointer;
+	font-weight: bolder;
+}
+
+#addButton2{
+	width: 35px;
+	height: 35px;
+	border: 3px solid yellowgreen;
+	color: yellow;
+	border-radius: 40px;
+	text-align: center;
+	line-height: 32px;
+	float:right;
+	margin-right: 30px;
+	margin-top: -115px;
+	cursor:pointer;
+	font-weight: bolder;
+}
+
+#addButton3{
+	width: 35px;
+	height: 35px;
+	border: 3px solid yellowgreen;
+	color: yellow;
+	border-radius: 40px;
+	text-align: center;
+	line-height: 32px;
+	float:right;
+	margin-right: 30px;
+	margin-top: -45px;
+	cursor:pointer;
+	font-weight: bolder;
 }
 
 #help{
@@ -78,6 +167,7 @@
 	cursor:pointer;
 	font-weight: bolder;
 }
+
 #bdsharebuttonbox{
 	width: 35px;
 	height: 35px;
@@ -104,9 +194,17 @@
 	margin-left: -200px;
 	top: 20px;
 	display: none;
-	font-size: 50px;
+	font-size: 30px;
 	color: yellow;
 }
+
+.test{
+	font-size: 200%;
+	color: yellow;
+	margin-top: 30px;
+}
+
+
 
 #stop{
 	width: 400px;
@@ -146,9 +244,25 @@
 	font-size: 20px;
 	font-weight: bolder;
 	margin: 0 auto;
-	margin-top: 10px;
+	margin-top: 5px;
 	cursor: pointer;
 }
+
+.buttonF{
+	width: 150px;
+	height: 50px;
+	color: #ffffff;
+	background-color: rgba(0,0,0,0.6);
+	text-align: center;
+	border-radius: 20px;
+	line-height: 50px;
+	font-size: 20px;
+	font-weight: bolder;
+	margin: 0 auto;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
 </style>
 </head>
 
@@ -159,11 +273,14 @@
 		<div>分数：<span id="killScore">0</span></div>
 		<div>玩家血量：<span id="playBlood">5</span></div>
 		<div>最高分：<span id="highscore">0</span></div>
+		<div>积分：<span id="point">0</span></div>
 	</div>
 	
 	<div id="stopgame" onclick="mystopgame()">||</div>
 	
 	<div id="help" onclick="showhelp()">帮助</div>
+	
+	<div><span id="magicNumber">0</span></div>
 	
 	</div>
 	
@@ -171,23 +288,42 @@
 		<div class="button" onclick="continuegame()">继续游戏</div>
 		<div class="button" onclick="newgame()">新的游戏</div>
 		<div class="level">选择难度：</div>
-		<div class="button" onclick="speed=10,adspeed=0.2,score=1,newgame()">容易</div>
-		<div class="button" onclick="speed=20,adspeed=0.3,score=2,newgame()">中等</div>
-		<div class="button" onclick="speed=30,adspeed=0.4,score=3,newgame()">困难</div>
+		<div class="button" onclick="adspeed=0.2,score=1,newgame()">容易</div>
+		<div class="button" onclick="adspeed=0.3,score=2,newgame()">中等</div>
+		<div class="button" onclick="adspeed=0.4,score=3,newgame()">困难</div>
 		</div>
 		
 	<div id="dead">
+		<div class="button" onclick="showlevel()">升级</div>
 		<div class="button" onclick="newgame()">再来一次</div>
 		<div class="level">选择难度：</div>
-		<div class="button" onclick="speed=10,adspeed=0.2,score=1,newgame()">容易</div>
-		<div class="button" onclick="speed=20,adspeed=0.3,score=2,newgame()">中等</div>
-		<div class="button" onclick="speed=30,adspeed=0.4,score=3,newgame()">困难</div>
+		<div class="button" onclick="adspeed=0.2,score=1,newgame()">容易</div>
+		<div class="button" onclick="adspeed=0.3,score=2,newgame()">中等</div>
+		<div class="button" onclick="adspeed=0.4,score=3,newgame()">困难</div>
+		</div>
+		
+	<div id="begin">
+		<div class="level">请选择难度：</div>
+		<div class="button" onclick="adspeed=0.2,score=1,newgame()">容易</div>
+		<div class="button" onclick="adspeed=0.3,score=2,newgame()">中等</div>
+		<div class="button" onclick="adspeed=0.4,score=3,newgame()">困难</div>
 		</div>
 		
 	<div id="helptext">
-		<p>按方向键移动，空格键攻击，X键作弊</p>
+		<p>按方向键移动，空格键攻击，接到道具盒可以随机获得技能点或玩家生命值，游戏结束后可以升级角色</p>
 		<div class="button" onclick="continuegame()">继续游戏</div>
 		</div>
+		
+	<div id="levelup">
+		<div class="test">生命值：<span id="bloodLevel">1</span></div>
+		<div class="test">速度：<span id="speedLevel">1</span></div>
+		<div class="test">道具频率：<span id="giftLevel">1</span></div>
+		<div id="addButton1" onclick="lifeup()">+</div>
+		<div id="addButton2" onclick="speedup()">+</div>
+		<div id="addButton3" onclick="giftup()">+</div>
+		<div class="buttonF" onclick="finish()">完成</div>
+		</div>
+		
 	<div id="share">
 	<div class="bdsharebuttonbox">
 		<a href="#" class="bds_more" data-cmd="more" >分享到：</a>
@@ -219,17 +355,23 @@
 					"bdContainerClass":null,
 					"bdSelectMiniList":["sqq","qzone","tsina","tieba","weixin"]}}
 					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?'];</script>
-		
 	<script>
 		
 		var mainObj=document.getElementById("main");
 		var smallPlaneArray=[];
 		var bulletArray=[];
+		var giftArray=[];
 		var speed = 10;
 		var adspeed=0.2;
 		var score=1;
 		var f=0;
 		var n=1;
+		var playerSpeed = 10;
+		var magicNumber = 0;
+		var point=0;
+		var blood=5;
+		var bloodLevel = 1;
+		var rannum = 6;
 		
 		
 		var upBtn=false;
@@ -242,58 +384,137 @@
 		var killScore=document.getElementById("killScore");
 		var playBlood=document.getElementById("playBlood");
 		var highscore=document.getElementById("highscore");
+		var bloodLevel=document.getElementById("bloodLevel");
+		var speedLevel=document.getElementById("speedLevel");
+		var giftLevel=document.getElementById("giftLevel");
+		var magicNumber = document.getElementById("magicNumber");
+		var point = document.getElementById("point");
+		var blood = document.getElementById("blood");
+		var rannum = document.getElementById("rannum");
 		
+		begin();
 		
-		
-		var player=new playerPlaneProto("/Test/img/fish.png",360,500,10);
-		var smallPlaneTimer=setInterval(createSmallPlane,1000);
-		var smallPlaneMoveTimer=setInterval(smallPlaneMove,50);
-		var ctrPlayTimer=setInterval(ctrPlay,20);
-		var bulletMoveTimer=setInterval(bulletMove,10);
-		var crashCheckTimer=setInterval(crashCheck,100);
-		var crashCheckTimer2=setInterval(crashCheck2,100);
+		var player=new playerPlaneProto("/Test/img/fish.png",360,500,playerSpeed);
+		var smallPlaneTimer;//=setInterval(createSmallPlane,1000);
+		var giftTimer;
+		var giftMoveTimer;
+		var smallPlaneMoveTimer;//=setInterval(smallPlaneMove,50);
+		var ctrPlayTimer;//=setInterval(ctrPlay,20);
+		var bulletMoveTimer;//=setInterval(bulletMove,10);
+		var crashCheckTimer;//=setInterval(crashCheck,100);
+		var crashCheckTimer2;//=setInterval(crashCheck2,100);
+		var crashCheckTimer3;
 		
 		var stop=document.getElementById("stop");
 		var dead=document.getElementById("dead");
 		var helptext=document.getElementById("helptext");
+		var begin=document.getElementById("begin");
+		var levelup=document.getElementById("levelup");
+		
+		function lifeup()
+		{
+			if(parseInt(point.innerHTML)>=1000)
+			{
+				bloodLevel.innerHTML=parseInt(bloodLevel.innerHTML)+1;
+				point.innerHTML=parseInt(point.innerHTML)-1;
+			}
+		}
+		
+		function speedup()
+		{
+			if(parseInt(point.innerHTML)>=200)
+			{
+				speedLevel.innerHTML=parseInt(speedLevel.innerHTML)+1;
+				point.innerHTML=parseInt(point.innerHTML)-200;
+			}
+		}
+		
+		function giftup()
+		{
+			if(parseInt(point.innerHTML)>=200)
+			{
+				giftLevel.innerHTML=parseInt(giftLevel.innerHTML)+1;
+				point.innerHTML=parseInt(point.innerHTML)-200;
+			}
+		}
+		
+		function finish()
+		{
+			var levelup=document.getElementById("levelup");
+			levelup.style.display="none";
+			dead.style.display="block";
+		}
+		
+		function showlevel()
+		{
+			var levelup=document.getElementById("levelup");
+			levelup.style.display="block";
+			dead.style.display="none";
+		}
+		
+		
+		function begin()
+		{
+			var begin=document.getElementById("begin");
+			begin.style.display="block";
+			clearInterval(smallPlaneTimer);
+			clearInterval(giftTimer);
+			clearInterval(giftMoveTimer);
+			clearInterval(smallPlaneMoveTimer);
+			clearInterval(ctrPlayTimer);
+			clearInterval(bulletMoveTimer);
+			clearInterval(crashCheckTimer);
+			clearInterval(crashCheckTimer2);
+			clearInterval(crashCheckTimer3);
+		}
 		
 		function showhelp()
 		{
 			var helptext=document.getElementById("helptext");
 			helptext.style.display="block";
 			clearInterval(smallPlaneTimer);
+			clearInterval(giftTimer);
+			clearInterval(giftMoveTimer);
 			clearInterval(smallPlaneMoveTimer);
 			clearInterval(ctrPlayTimer);
 			clearInterval(bulletMoveTimer);
 			clearInterval(crashCheckTimer);
 			clearInterval(crashCheckTimer2);
+			clearInterval(crashCheckTimer3);
 		}
 		
 		function mystopgame(){
 			var stop=document.getElementById("stop");
 			stop.style.display="block";
 			clearInterval(smallPlaneTimer);
+			clearInterval(giftTimer);
+			clearInterval(giftMoveTimer);
 			clearInterval(smallPlaneMoveTimer);
 			clearInterval(ctrPlayTimer);
 			clearInterval(bulletMoveTimer);
 			clearInterval(crashCheckTimer);
 			clearInterval(crashCheckTimer2);
+			clearInterval(crashCheckTimer3);
 		}
 		
 		function continuegame(){
 			stop.style.display="none";
 			helptext.style.display="none";
 			smallPlaneTimer=setInterval(createSmallPlane,1000);
+			giftTimer=setInterval(createGift,6000);
+			giftMoveTimer=setInterval(giftMove,50);
 			smallPlaneMoveTimer=setInterval(smallPlaneMove,50);
 			ctrPlayTimer=setInterval(ctrPlay,20);
-			bulletMoveTimer=setInterval(bulletMove,10);
+			bulletMoveTimer=setInterval(bulletMove,5);
 			crashCheckTimer=setInterval(crashCheck,100);
-			crashCheckTimer=setInterval(crashCheck2,100);
+			crashCheckTimer2=setInterval(crashCheck2,100);
+			crashCheckTimer3=setInterval(crashCheck3,100);
 		}
 		
 		function newgame(){
 			stop.style.display="none";
 			dead.style.display="none";
+			begin.style.display="none";
 			mainObj.removeChild(player.imgNode);
 			player=null;
 			for (var i=0;i<smallPlaneArray.length;i++) {
@@ -304,16 +525,23 @@
 				mainObj.removeChild(bulletArray[i].imgNode);
 			}
 			bulletArray.splice(0,bulletArray.length);
-			playBlood.innerHTML=5;
+			for (var i=0;i<giftArray.length;i++) {
+				mainObj.removeChild(giftArray[i].imgNode);
+			}
+			giftArray.splice(0,giftArray.length);
+			playBlood.innerHTML=parseInt(bloodLevel.innerHTML)+4;
 			killNum.innerHTML=0;
 			killScore.innerHTML=0;
-			player=new playerPlaneProto("/Test/img/fish.png",360,500,10);
+			player=new playerPlaneProto("/Test/img/fish.png",360,500,10+(parseInt(speedLevel.innerHTML)-1)*0.5);
 			smallPlaneTimer=setInterval(createSmallPlane,1000);
+			giftTimer=setInterval(createGift,6000);
+			giftMoveTimer=setInterval(giftMove,50);
 			smallPlaneMoveTimer=setInterval(smallPlaneMove,50);
 			ctrPlayTimer=setInterval(ctrPlay,20);
 			bulletMoveTimer=setInterval(bulletMove,5);
 			crashCheckTimer=setInterval(crashCheck,100);
-			crashCheckTimer=setInterval(crashCheck2,100);
+			crashCheckTimer2=setInterval(crashCheck2,100);
+			crashCheckTimer3=setInterval(crashCheck3,100);
 		}
 		
 		function SmallPlaneProto(imgSrc,x,y,speed){
@@ -341,8 +569,35 @@
 			
 		}
 		
-		
+		function GiftProto(imgSrc,x,y,speed){
+			this.imgNode=document.createElement("img");
+			this.imgSrc=imgSrc;
+			this.x=x;
+			this.y=y;
+			this.exTime=2;
+			this.isDead=false;
+			this.speed=speed;
+			this.init=function(){
+				this.imgNode.src=this.imgSrc;
+				this.imgNode.style.position="absolute";
+				this.imgNode.style.left=this.x+"px";
+				this.imgNode.style.top=this.y+"px";
+				mainObj.appendChild(this.imgNode)
+			}
 			
+			this.init();
+			
+			this.move=function(){
+				this.imgNode.style.top=parseInt(this.imgNode.style.top)+this.speed+"px";
+			}
+			
+			
+		}
+		
+		function createGift(){
+				var gift=new GiftProto("/Test/img/gift1.png",parseInt(Math.random()*700),-parseInt(Math.random()*100+40),parseInt(Math.random()*speed+1));
+				giftArray.push(gift);
+		}
 		
 		
 		function createSmallPlane(){
@@ -352,6 +607,43 @@
 				n++;
 		}
 		
+		
+		function giftMove(){
+			for(var i=0;i<giftArray.length;i++){
+				if(giftArray[i].isDead==false){
+				giftArray[i].move();
+				if(parseInt(giftArray[i].imgNode.style.top)>=600){
+					mainObj.removeChild(giftArray[i].imgNode);
+					giftArray.splice(i,1)
+					if(parseInt(playBlood.innerHTML)<=0)
+					{
+						var dead=document.getElementById("dead");
+						dead.style.display="block";
+						if(parseInt(killScore.innerHTML)>parseInt(highscore.innerHTML))
+						{
+							highscore.innerHTML=parseInt(killScore.innerHTML);
+						}
+						clearInterval(smallPlaneTimer);
+						clearInterval(smallPlaneMoveTimer);
+						clearInterval(giftTimer);
+						clearInterval(giftMoveTimer);
+						clearInterval(ctrPlayTimer);
+						clearInterval(bulletMoveTimer);
+						clearInterval(crashCheckTimer);
+						clearInterval(crashCheckTimer2);
+						clearInterval(crashCheckTimer3);
+					}
+				}
+				}
+				else{
+					giftArray[i].exTime--;
+					if(giftArray[i].exTime==0){
+						mainObj.removeChild(giftArray[i].imgNode);
+						giftArray.splice(i,1);
+					}
+				}
+			}
+		}
 		
 		function smallPlaneMove(){
 			for(var i=0;i<smallPlaneArray.length;i++){
@@ -370,12 +662,16 @@
 						{
 							highscore.innerHTML=parseInt(killScore.innerHTML);
 						}
+						point.innerHTML=parseInt(point.innerHTML)+parseInt(killScore.innerHTML);
 						clearInterval(smallPlaneTimer);
 						clearInterval(smallPlaneMoveTimer);
+						clearInterval(giftTimer);
+						clearInterval(giftMoveTimer);
 						clearInterval(ctrPlayTimer);
 						clearInterval(bulletMoveTimer);
 						clearInterval(crashCheckTimer);
 						clearInterval(crashCheckTimer2);
+						clearInterval(crashCheckTimer3);
 					}
 				}
 				}
@@ -438,14 +734,21 @@
 			}
 			
 			this.clear=function(){
-				for (var i=0;i<smallPlaneArray.length;i++)
+				if(magicNumber.innerHTML>0)
 				{
-					smallPlaneArray[i].isDead=true;
-					smallPlaneArray[i].imgNode.src="/Test/img/boom.png";
-					killNum.innerHTML=parseInt(killNum.innerHTML)+1;
-					killScore.innerHTML=parseInt(killScore.innerHTML)+score;
+					for (var i=0;i<smallPlaneArray.length;i++)
+					{
+						smallPlaneArray[i].isDead=true;
+						smallPlaneArray[i].imgNode.src="/Test/img/boom.png";
+						killNum.innerHTML=parseInt(killNum.innerHTML)+1;
+						killScore.innerHTML=parseInt(killScore.innerHTML)+score;
+					}
+					magicNumber.innerHTML = parseInt(magicNumber.innerHTML)-1;
 				}
 			}
+			
+
+			
 			
 		}
 		
@@ -505,7 +808,8 @@
 				player.movedown();
 			}
 			if(shootBtn==true){
-				player.shoot();
+				//player.shoot();
+				setInterval(player.shoot(),1000);
 			}
 		}
 		
@@ -580,13 +884,38 @@
 						{
 							highscore.innerHTML=parseInt(killScore.innerHTML);
 						}
+						point.innerHTML=parseInt(point.innerHTML)+parseInt(killScore.innerHTML);
 						clearInterval(smallPlaneTimer);
 						clearInterval(smallPlaneMoveTimer);
+						clearInterval(giftTimer);
+						clearInterval(giftMoveTimer);
 						clearInterval(ctrPlayTimer);
 						clearInterval(bulletMoveTimer);
 						clearInterval(crashCheckTimer);
 						clearInterval(crashCheckTimer2);
+						clearInterval(crashCheckTimer3);
 					}
+					}
+				}
+		}
+		
+		function crashCheck3(){
+			for (var i=0;i<giftArray.length;i++) {
+					var playerLeft=parseInt(player.imgNode.style.left);
+					var playerTop=parseInt(player.imgNode.style.top);
+					var giftTop=parseInt(giftArray[i].imgNode.style.top);
+					var giftLeft=parseInt(giftArray[i].imgNode.style.left);
+					if(giftLeft>=playerLeft-40&&giftLeft<=(playerLeft+10)&&giftTop+40>=playerTop&&giftTop<=playerTop+132){
+						if(Math.floor(Math.random()*10+1)>5)
+						{
+							magicNumber.innerHTML=parseInt(magicNumber.innerHTML)+1;
+						}
+						else
+						{
+							playBlood.innerHTML = parseInt(playBlood.innerHTML)+1;
+						}
+						mainObj.removeChild(giftArray[i].imgNode);
+						giftArray.splice(i,1);
 					}
 				}
 		}
