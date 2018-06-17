@@ -289,8 +289,8 @@
 		<div class="button" onclick="newgame()">新的游戏</div>
 		<div class="level">选择难度：</div>
 		<div class="button" onclick="adspeed=0.2,score=1,newgame()">容易</div>
-		<div class="button" onclick="adspeed=0.3,score=2,newgame()">中等</div>
-		<div class="button" onclick="adspeed=0.4,score=3,newgame()">困难</div>
+		<div class="button" onclick="adspeed=0.4,score=2,newgame()">中等</div>
+		<div class="button" onclick="adspeed=0.6,score=3,newgame()">困难</div>
 		</div>
 		
 	<div id="dead">
@@ -298,26 +298,26 @@
 		<div class="button" onclick="newgame()">再来一次</div>
 		<div class="level">选择难度：</div>
 		<div class="button" onclick="adspeed=0.2,score=1,newgame()">容易</div>
-		<div class="button" onclick="adspeed=0.3,score=2,newgame()">中等</div>
-		<div class="button" onclick="adspeed=0.4,score=3,newgame()">困难</div>
+		<div class="button" onclick="adspeed=0.4,score=2,newgame()">中等</div>
+		<div class="button" onclick="adspeed=0.6,score=3,newgame()">困难</div>
 		</div>
 		
 	<div id="begin">
 		<div class="level">请选择难度：</div>
 		<div class="button" onclick="adspeed=0.2,score=1,newgame()">容易</div>
-		<div class="button" onclick="adspeed=0.3,score=2,newgame()">中等</div>
-		<div class="button" onclick="adspeed=0.4,score=3,newgame()">困难</div>
+		<div class="button" onclick="adspeed=0.4,score=2,newgame()">中等</div>
+		<div class="button" onclick="adspeed=0.6,score=3,newgame()">困难</div>
 		</div>
 		
 	<div id="helptext">
-		<p>按方向键移动，空格键攻击，接到道具盒可以随机获得技能点或玩家生命值，游戏结束后可以升级角色</p>
+		<p>按方向键移动，空格键攻击，X键使用技能。接到道具盒可以随机获得技能点或玩家生命值，游戏结束后可以升级角色。</p>
 		<div class="button" onclick="continuegame()">继续游戏</div>
 		</div>
 		
 	<div id="levelup">
-		<div class="test">生命值：<span id="bloodLevel">1</span></div>
-		<div class="test">速度：<span id="speedLevel">1</span></div>
-		<div class="test">道具频率：<span id="giftLevel">1</span></div>
+		<div class="test">生命值：<span id="bloodLevel">1</span><span>      花费：500</span></div>
+		<div class="test">速度：<span id="speedLevel">1</span><span>      花费：200</span></div>
+		<div class="test">道具：<span id="giftLevel">1</span><span>      花费：200</span></div>
 		<div id="addButton1" onclick="lifeup()">+</div>
 		<div id="addButton2" onclick="speedup()">+</div>
 		<div id="addButton3" onclick="giftup()">+</div>
@@ -333,8 +333,10 @@
 		<a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧">百度贴吧</a>
 		<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></div>
 		</div>
-	<script>
-	window._bd_share_config={
+		
+		
+
+<script>window._bd_share_config={
 		"common":{
 			"bdSnsKey":{},
 			"bdText":"飞鱼射击",
@@ -413,10 +415,10 @@
 		
 		function lifeup()
 		{
-			if(parseInt(point.innerHTML)>=1000)
+			if(parseInt(point.innerHTML)>=500)
 			{
 				bloodLevel.innerHTML=parseInt(bloodLevel.innerHTML)+1;
-				point.innerHTML=parseInt(point.innerHTML)-1;
+				point.innerHTML=parseInt(point.innerHTML)-500;
 			}
 		}
 		
@@ -539,7 +541,7 @@
 			smallPlaneMoveTimer=setInterval(smallPlaneMove,50);
 			ctrPlayTimer=setInterval(ctrPlay,20);
 			bulletMoveTimer=setInterval(bulletMove,5);
-			crashCheckTimer=setInterval(crashCheck,100);
+			crashCheckTimer=setInterval(crashCheck,90);
 			crashCheckTimer2=setInterval(crashCheck2,100);
 			crashCheckTimer3=setInterval(crashCheck3,100);
 		}
@@ -870,7 +872,7 @@
 					var playerTop=parseInt(player.imgNode.style.top);
 					var plTop=parseInt(smallPlaneArray[i].imgNode.style.top);
 					var plLeft=parseInt(smallPlaneArray[i].imgNode.style.left);
-					if(plLeft>=playerLeft-8&&plLeft<=(playerLeft+50)&&plTop+40>=playerTop&&plTop<=playerTop+132){
+					if(plLeft>=playerLeft-20&&plLeft<=(playerLeft+50)&&plTop+40>=playerTop&&plTop<=playerTop+132){
 						smallPlaneArray[i].isDead=true;
 						smallPlaneArray[i].imgNode.src="/Test/img/boom.png";
 						killNum.innerHTML=parseInt(killNum.innerHTML)+1;
