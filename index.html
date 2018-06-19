@@ -330,7 +330,7 @@
 		</div>
 		
 	<div id="levelup">
-		<div class="test">生命值：<span id="bloodLevel">1</span><span>      花费：500</span></div>
+		<div class="test">生命值：<span id="bloodLevel">1</span><span>      花费：5</span></div>
 		<div class="test">速度：<span id="speedLevel">1</span><span>      花费：200</span></div>
 		<div class="test">道具：<span id="giftLevel">1</span><span>      花费：200</span></div>
 		<div id="addButton1" onclick="lifeup()">+</div>
@@ -430,10 +430,10 @@
 		
 		function lifeup()
 		{
-			if(parseInt(point.innerHTML)>=500)
+			if(parseInt(point.innerHTML)>=5)
 			{
 				bloodLevel.innerHTML=parseInt(bloodLevel.innerHTML)+1;
-				point.innerHTML=parseInt(point.innerHTML)-500;
+				point.innerHTML=parseInt(point.innerHTML)-5;
 			}
 		}
 		
