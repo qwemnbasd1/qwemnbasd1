@@ -20,17 +20,7 @@
 	overflow: hidden;
 }
 	
-#comment{
-	line-height:-20px;
-	margin-left:5px;
-	margin-top:-600px;
-}
 
-#commentbtn{
-	line-height:-20px;
-	margin-left:5px;
-	margin-top:10px;
-}
 
 #begin{
 	width: 400px;
@@ -940,47 +930,7 @@
 		
 	</script>
 	
-    	<div id="comment">
-        <h1>留言板</h1>
-        <textarea id="memo" cols="30" rows="10"></textarea>
-        </div>
-        <div id="commentbtn">
-        <input type="button" value="评论后查看他人评论" onclick="saveStorage('memo')" />
-        </div>
-        <p id="msg"></p>
-        </div>
-        <script type="text/javascript">
-
-            function saveStorage(id) {
-                var data = document.getElementById(id).value;
-                var time = new Date().getTime();
-                localStorage.setItem(time,data);
-                loadStorage('msg');
-                memo.value="";
-            }
-
-            function loadStorage(id) {
-                var result = '<table border="1">';
-                for(var i = 0; i < localStorage.length; i++) {
-                    var kes = localStorage.key(i);
-                    var value = localStorage.getItem(kes);
-                    var date = new Date();
-                    date.setTime(kes);
-                   // var datestr = date.toGMTString();
-                    result += '<tr><td>' + value; //+ '</td><td>' + datestr + '</td></tr>'
-                }
-                result += '</table>';
-                var target = document.getElementById(id);
-                target.innerHTML = result;
-
-            }
-
-            function clearStorage() {
-                localStorage.clear();  
-                target.value=null;
-            }
-
-        </script>
+    	
 </body>
 
 </html>
